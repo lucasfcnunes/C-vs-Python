@@ -6,11 +6,13 @@
 
 #define OK 0
 
+#define DEBUG 1
+
 //Define o struct
 struct ficha_palavra
 {
     char palavra[MAX_LENGTH];
-    int quantidade;
+    short unsigned quantidade;
 };
 
 int main(int argc, const char *argv[])
@@ -19,14 +21,14 @@ int main(int argc, const char *argv[])
     //Recebe a frase digitada e salva no vetor frase
     char frase[MAX_LENGTH];
     // printf("%i", argc);
-    if (argc == 1 || argc > 2)
+    if (argc == 2)
     {
-        printf("Digite a frase: ");
-        gets(frase);
+        strncpy(frase, argv[1], MAX_LENGTH);
     }
     else
     {
-        strncpy(frase, argv[1], MAX_LENGTH);
+        printf("Digite a frase: ");
+        gets(frase);
     }
 
     //Declaração de variaveis
@@ -46,9 +48,12 @@ int main(int argc, const char *argv[])
                 vazio--;
             }
         }
-        if (frase[i] == ' ' && frase[i - 1] != ' ')
+        else
         {
-            vazio++;
+            if (frase[i] == ' ' && frase[i - 1] != ' ')
+            {
+                vazio++;
+            }
         }
         ultimoElemento = frase[i];
         tamanho++;
@@ -58,8 +63,8 @@ int main(int argc, const char *argv[])
     {
         vazio--;
     }
-    qPalavras = vazio + 1;            //Quantidade de palavras
-    char palavras[qPalavras - 1][80]; //Vetor palavras com tamanho apropriado
+    qPalavras = vazio + 1;                    //Quantidade de palavras
+    char palavras[qPalavras - 1][MAX_LENGTH]; //Vetor palavras com tamanho apropriado
 
     //Separa as palavras em um vetor
     int contador = 0;

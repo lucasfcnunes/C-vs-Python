@@ -1,6 +1,6 @@
 SHELL = /bin/sh
 
-EXECS = freq_exemplo
+EXECS = freq
 
 OBJS = $(EXECS).c
 CFLAG = -Wall -g
@@ -15,8 +15,12 @@ ${OUTPUT_PATH}: ${OBJ}
 	${CC} ${CFLAGS} ${INCLUDES} -o $@ ${OBJS} ${LIBS}
 
 test: ${OUTPUT_PATH}
-	$< "  OI "
+	$< "    " || true
+	$< "    oi"
+	$< "    oi       oi    batata"
+	$< "a"
 	$< "oi oi tchau tchau não"
 	$< "oi tchau     tchau não"
+	$< "A aA a"
 	# $<
 
