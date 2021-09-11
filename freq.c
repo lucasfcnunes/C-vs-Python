@@ -42,7 +42,7 @@ int main(int argc, const char *argv[])
     else if (true)
     {
         char input_text[MAX_LENGTH + 1];
-        printf("Type text to be split by \"%s\": ", SENTINEL);
+        printf("Type text to be split by \"%c\": ", SENTINEL);
         gets(input_text); // ! use getline
         // getline(&input_text, &(MAX_LENGTH), stdin);
         // scanf("%s", input_text);
